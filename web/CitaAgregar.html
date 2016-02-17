@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Cita Agregar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="js/jquery.js" ></script>
+        <script src="js/script.js" type="text/javascript"></script>
+        <script src="assets/js/smoothscroll.js"></script>
+        <script src="assets/js/appear.min.js"></script>
+        <script src="assets/js/animations.min.js"></script>
+        <script src="assets/js/backbone.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+        <link href="assets/css/style.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/animations.min.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/animations.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/normalize.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css" type="text/css"/>
+        <link href="css/materialize.css" rel="stylesheet" type="text/css"/>
+        <script src="js/materialize.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.parallax').parallax();
+            });
+        </script>
+
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".dropdown-button").dropdown({hover: true});
+
+                $('.datepicker').pickadate({
+                    selectMonths: true,
+                    selectYears: 15
+                });
+
+                Clientesvar.cargar();
+                $("#clientes").on("change", function () {
+
+                    $('input[name=idCliente]').val($(this).val());
+                    Citasvar.mostrarClienteC($("#idCliente").val());
+
+                });
+
+
+                Mascotasvar.cargar();
+                $("#mascotas").on("change", function () {
+
+                    $('input[name=idMascota]').val($(this).val());
+                    Citasvar.mostrarMascotaC($("#idMascota").val());
+
+                });
+
+
+                Empleadosvar.cargar();
+                $("#empleados").on("change", function () {
+
+                    $('input[name=idEmpleado]').val($(this).val());
+                    Citasvar.mostrarEmpleadoC($("#idEmpleado").val());
+
+                });
+
+
+
+                $("#botonAgregar").click(function (e) {
+                    e.preventDefault();
+                    var err = "<li><i class='material-icons right md-48'>error</i>";
+
+                    if ($("#clientes").val() == "") {
+                        Materialize.toast('¡ERROR! Es necesario seleccionar un cliente' + err, 3000);
+                        $("#clientes").focus();
+                        return false;
+                    } else if ($("#mascotas").val() == "") {
+                        Materialize.toast('¡ERROR! Es necesario seleccionar una mascota' + err, 3000);
+                        $("#mascotas").focus();
+                        return false;
+                    } else if ($("#empleados").val() == "") {
+                        Materialize.toast('¡ERROR! Es necesario seleccionar un empleado' + err, 3000);
+                        $("#empleados").focus();
+                        return false;
+                    } else if ($("#descripcion").val() == "") {
+                        Materialize.toast('¡ERROR! Es necesario proporcionar una descripción' + err, 3000);
+                        $("#descripcion").focus();
+                        return false;
+                    } else if ($("#fecha").val() == "") {
+                        Materialize.toast('¡ERROR! Es necesario seleccionar una fecha' + err, 3000);
+                        $("#fecha").focus();
+                        return false;
+                    } else if ($("#costo").val() == "nulo") {
+                        Materialize.toast('¡ERROR! Es necesario proporcionar un costo' + err, 3000);
+                        $("#costo").focus();
+                        return false;
+                    }
+                    else {
+
+                        Citasvar.insertar();
+                        var m = "<li><i class='material-icons right md-48'>check_circle</i>";
+                        Materialize.toast('Cita agregada con éxito' + m, 4000);
+
+                    }
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <div class="parallax-container">
+
+
+            <div class="parallax"> 
+
+                <img src="images/cita1.jpg" alt=""/>
+
+            </div>
+
+            <nav class="blue">
+                <div class="nav-wrapper">
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">add</i><a href="ClienteAgregar.html">Agregar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">edit</i><a href="ClienteActualizar.html">Modificar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">delete</i><a href="ClienteEliminar.html">Eliminar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">search</i><a href="ClientesMostrarTodos.html">Mostrar Todos</a></li>
+                    </ul>
+                    <ul id="dropdown2" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">add</i><a href="MascotaAgregar.html">Agregar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">edit</i><a href="MascotaActualizar.html">Modificar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">delete</i><a href="MascotaEliminar.html">Eliminar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">search</i><a href="MascotaMostrarTodos.html">Mostrar Todos</a></li>
+                    </ul>
+                    <ul id="dropdown3" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">add</i><a href="EmpleadosAgregar.html">Agregar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">edit</i><a href="EmpleadosActualizar.html">Modificar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">delete</i><a href="EmpleadosEliminar.html">Eliminar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">search</i><a href="EmpleadosMostrarTodos.html">Mostrar Todos</a></li>
+                    </ul>
+                    <ul id="dropdown4" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">add</i><a href="CitaAgregar.html">Agregar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">edit</i><a href="CitaActualizar.html">Modificar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">delete</i><a href="CitaEliminar.html">Eliminar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">search</i><a href="CitaMostrarTodos.html">Mostrar Todos</a></li>
+                    </ul>
+                    <a href="#!" class="brand-logo">Logo</a>
+                    <ul class="right">
+                        <li><a class="dropdown-button waves-effect wavess" href="#!" data-activates="dropdown1"><i class="material-icons left md-36">face</i>Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button waves-effect wavess" href="#!" data-activates="dropdown2"><i class="material-icons left md-36">pets</i>Mascotas<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button waves-effect wavess" href="#!" data-activates="dropdown3"><i class="material-icons left md-36">supervisor_account</i>Empleados<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button waves-effect wavess" href="#!" data-activates="dropdown4"><i class="material-icons left md-36">today</i>Citas<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="waves-effect wavess" href="index.html"><i class="material-icons left md-36">exit_to_app</i>Salir</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <section class="section_inicio">
+                <div class="container center-align"> 
+
+                    <div class="box valign-wrapper">
+
+                    </div>
+                    <div class="intro z-depth-0">
+                        <div class="container">
+                            <div class="card-panel">
+                                <div class="row">
+                                    <form class="col s12">
+                                        <div class="row ">
+                                            <div class="center center-align">
+                                                <label>Cliente: </label>
+                                                <select id="clientes" class="browser-default">
+                                                    <option value="" selected>--Seleccionar un Cliente--</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="center center-align">
+                                                <label>Mascotas: </label>
+                                                <select id="mascotas" class="browser-default">
+                                                    <option value="" selected>--Seleccionar una Mascota--</option>
+                                                </select>
+                                            </div>
+                                            <div class="center center-align">
+                                                <label>Empleados: </label>
+                                                <select id="empleados" class="browser-default">
+                                                    <option value="" selected>--Seleccionar un Empleado--</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <i class="material-icons prefix">call</i>
+                                                <input name="descripcion" id="descripcion" value="" type="text" class="validate">
+                                                <label for="descripcion">Descripción:</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <i class="material-icons prefix">location_on</i>
+                                                <input name="fecha" id="fecha" value="" type="date" class="datepicker">
+                                                <label for="fecha">Fecha:</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <i class="material-icons prefix">email</i>
+                                                <input name="costo" id="costo" value="" type="text" class="validate">
+                                                <label for="costo">Costo:</label>
+                                            </div>
+                                        </div>
+                                        <div class="center">
+                                            <button class="btn waves-effect waves-effect btn-large yellow" type="submit" id="botonAgregar" value="Agregar">Agregar
+                                                <i class="material-icons right md-36">add_circle</i>
+                                            </button>
+
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <input hidden="" type="text" name="idCliente" id="idCliente" value="" /><br><br>
+        <input hidden="" type="text" name="idMascota" id="idMascota" value="" /><br><br>
+        <input hidden="" type="text" name="idEmpleado" id="idEmpleado" value="" />
+
+
+
+
+    </body>
+</html>

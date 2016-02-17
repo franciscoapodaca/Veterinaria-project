@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Cliente Eliminar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/jquery.js" ></script>
+        <script src="js/script.js" type="text/javascript"></script>
+        <script src="assets/js/smoothscroll.js"></script>
+        <script src="assets/js/appear.min.js"></script>
+        <script src="assets/js/animations.min.js"></script>
+        <script src="assets/js/backbone.js"></script>
+
+        <link href="css/pure/forms.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
+        <link href="assets/css/style.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/animations.min.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/animations.css" type="text/css" rel="stylesheet">
+        <link href="assets/css/normalize.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css" type="text/css"/>
+        <link href="css/materialize.css" rel="stylesheet" type="text/css"/>
+        <script src="js/materialize.js" type="text/javascript"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <script>
+            $(document).ready(function () {
+                // Activate the side menu 
+
+                $(".dropdown-button").dropdown({hover: true});
+
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.parallax').parallax();
+            });
+        </script>
+
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                Citasvar.obtenerCitasTabla();
+
+                $("#tabla").on("click", "#botonEliminar", function (e) {
+                    e.preventDefault();
+
+                    $('input[name=idCita]').val($(this).val());
+
+                    Citasvar.eliminar($("idCita").val());
+                    $(this).parent().parent().remove();
+                    var m = "<li><i class='material-icons right md-48'>check_circle</i>";
+                    Materialize.toast('Cita Eliminada con éxito' + m, 4000);
+
+                });
+
+            });
+
+        </script>
+    </head>
+    <body>
+
+        <div class="parallax-container">
+
+
+            <div class="parallax"> 
+
+                <img src="images/cita3.jpg" alt=""/>
+
+            </div>
+
+            <nav class="blue">
+                <div class="nav-wrapper">
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">add</i><a href="ClienteAgregar.html">Agregar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">edit</i><a href="ClienteActualizar.html">Modificar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">delete</i><a href="ClienteEliminar.html">Eliminar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">search</i><a href="ClientesMostrarTodos.html">Mostrar Todos</a></li>
+                    </ul>
+                    <ul id="dropdown2" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">add</i><a href="MascotaAgregar.html">Agregar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">edit</i><a href="MascotaActualizar.html">Modificar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">delete</i><a href="MascotaEliminar.html">Eliminar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">search</i><a href="MascotaMostrarTodos.html">Mostrar Todos</a></li>
+                    </ul>
+                    <ul id="dropdown3" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">add</i><a href="EmpleadosAgregar.html">Agregar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">edit</i><a href="EmpleadosActualizar.html">Modificar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">delete</i><a href="EmpleadosEliminar.html">Eliminar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">search</i><a href="EmpleadosMostrarTodos.html">Mostrar Todos</a></li>
+                    </ul>
+                    <ul id="dropdown4" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">add</i><a href="CitaAgregar.html">Agregar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">edit</i><a href="CitaActualizar.html">Modificar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">delete</i><a href="CitaEliminar.html">Eliminar</a></li>
+                        <li class="divider"></li>
+                        <li><i class="material-icons left md-48">search</i><a href="CitaMostrarTodos.html">Mostrar Todos</a></li>
+                    </ul>
+                    <a href="#!" class="brand-logo">Logo</a>
+                    <ul class="right">
+                        <li><a class="dropdown-button waves-effect wavess" href="#!" data-activates="dropdown1"><i class="material-icons left md-36">face</i>Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button waves-effect wavess" href="#!" data-activates="dropdown2"><i class="material-icons left md-36">pets</i>Mascotas<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button waves-effect wavess" href="#!" data-activates="dropdown3"><i class="material-icons left md-36">supervisor_account</i>Empleados<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-button waves-effect wavess" href="#!" data-activates="dropdown4"><i class="material-icons left md-36">today</i>Citas<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="waves-effect wavess" href="index.html"><i class="material-icons left md-36">exit_to_app</i>Salir</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <section class="section_inicio">
+
+                <div class="container ">
+                    <div class="card-panel">
+                        <table class="striped" id="tabla" border="1">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>DESCRIPCIÓN</th>
+                                    <th>FECHA</th>
+                                    <th>COSTO</th>
+                                    <th>CLIENTE</th>
+                                    <th>MASCOTA</th>
+                                    <th>EMPLEADO</th>
+                                    <th>OPCIÓN</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <input hidden="" type="text" name="idCita" id="idCita" value="" />
+        </div>
+
+
+
+    </body>
+</html>

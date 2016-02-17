@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/11/2015, 03:09:13 AM
+    Author     : Francisco Apodaca
+*/
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+input{
+    border-radius: 5px 5px 5px 5px;
+    background-color: white;
+    font-size: 25px;
+    color: black;
+
+}
+
+label{
+    font-size: 25px;
+    color: black;
+
+}
+
+@font-face{
+
+
+}
+
+.waves-effect {
+
+}
